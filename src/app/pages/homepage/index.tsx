@@ -1,10 +1,9 @@
-import { FC } from "react";
 import Banner from "./components/banner/banner";
 import dataBanner from "./data/banner-data.json";
 import CategoryList from "./components/category-list";
 import CategoryPreview from "./components/category-preview";
 
-const HomePage: FC = () => {
+function HomePage() {
   return (
     <div>
       <Banner data={dataBanner} />
@@ -16,6 +15,6 @@ const HomePage: FC = () => {
       </section>
     </div>
   );
-};
+}
 
 export default HomePage;

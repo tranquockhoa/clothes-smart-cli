@@ -4,6 +4,7 @@ import "./globals.css";
 import "@/app/styles/global.scss";
 import React from "react";
 import Header from "./components/layouts/header";
+import Footer from "./components/layouts/footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         <Header />
         <main style={{ paddingTop: "132px" }}> {children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,5 +1,7 @@
 import { FC } from "react";
-import styles from "./product-preview.module.scss";
+import styles from "./product-list.module.scss";
+import SmallText from "@/app/components/common/small-text";
+import ProductReview from "@/app/components/common/product-review";
 
 const data = [
   {
@@ -31,18 +33,29 @@ const ProductPreview: FC = () => {
       <div className={styles["wrap-item"]}>
         {data.map((data, id) => (
           <div key={id} className={styles["item"]}>
-            <a href="">
+            <SmallText text="NEW" className={styles["item--small--text"]} />
+            <ProductReview
+              url={data.url}
+              name="Áo ba lỗ nam mặc trong thoáng khí nhanh khô Excool"
+              price="399.000đ"
+              discount="16%"
+              priceDiscount="379.000đ"
+            />
+            {/* <a href="">
               <img src={data.url} alt="" />
             </a>
-            <div className={styles["wrap-color"]}>
-              <button type="button"></button>
-              <button></button>
-            </div>
-            <p>Áo Polo nam Premium Aircool</p>
-            <div className={styles["price"]}>
-              <b>399.000đ</b>
-              <p className={styles["discount-price"]}>379.000đ</p>
-            </div>
+            <div className={styles["item__des"]}>
+              <div className={styles["wrap-color"]}>
+                <button type="button"></button>
+                <button></button>
+              </div>
+              <p>Áo ba lỗ nam mặc trong thoáng khí nhanh khô Excool</p>
+              <div className={styles["price"]}>
+                <p className={styles["real-price"]}>399.000đ</p>
+                <span>16%</span>
+                <p className={styles["discount-price"]}>379.000đ</p>
+              </div>
+            </div> */}
           </div>
         ))}
       </div>

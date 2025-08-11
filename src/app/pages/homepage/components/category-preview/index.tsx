@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./category-preview.module.scss";
 import ContentBanner from "./components/content-banner";
 import Collection from "./components/collection";
-import ProductPreview from "./components/product-preview";
+import ProductPreview from "./components/product-list";
 
 const CategoryPreview: FC = () => {
   return (
