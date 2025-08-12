@@ -7,7 +7,7 @@ function Header() {
     <div className={styles["header-container"]}>
       <div className={styles["header-container--top"]}>
         <div className={styles["label-left"]}>
-          <a href="">Về CLOTHES-SMART</a>
+          <a href="">Về CLOTHES SMART</a>
           <a href="">COOLXPRINT</a>
         </div>
         <div className={styles["label-right"]}>

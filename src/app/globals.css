@@ -30,8 +30,16 @@ ul {
   list-style: none;
 }
 
+@font-face {
+  font-family: "CriteriaCF";
+  src: url("/fonts/criteria-cf-sans-font/Fontspring-DEMO-criteriacf-regular.otf")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: "CriteriaCF", sans-serif;
   font-size: 16px;
 }
 
