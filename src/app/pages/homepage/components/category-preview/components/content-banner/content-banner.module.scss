@@ -1,0 +1,22 @@
+@use "../../../../../../styles/variable.scss" as variable;
+
+.content-banner {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  h2 {
+    color: variable.$white-color;
+    font-size: variable.$font-size-6xl;
+  }
+  p {
+    color: variable.$white-color;
+    margin: 40px 0;
+  }
+  .content-banner--btn {
+    font-size: variable.$font-size-sm;
+    background-color: variable.$white-color;
+    padding: 12px 48px;
+    border-radius: 9999;
+    color: variable.$black-color;
+  }
+}

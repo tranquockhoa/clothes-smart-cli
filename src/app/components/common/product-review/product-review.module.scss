@@ -1,0 +1,51 @@
+@use "../../../styles//variable.scss" as variable;
+
+.product-review {
+  .item__des {
+    display: flex;
+    flex-direction: column;
+    gap: 10;
+    .wrap-color {
+      display: flex;
+      justify-content: start;
+      gap: 2px;
+      margin-top: 12px;
+      margin-bottom: 8px;
+      button {
+        flex: 0 0 calc(100% / 8);
+        height: 22px;
+        padding: 0;
+        border: none;
+        background-image: url("https://n7media.coolmate.me/uploads/June2025/quan-bb-trunk-pc-logo-cm15-den.jpg?aio=w-160&quot");
+        cursor: pointer;
+        border-radius: 9999;
+      }
+    }
+
+    .price {
+      display: flex;
+      gap: 4px;
+      justify-content: start;
+      align-items: center;
+      gap: 0.25rem;
+      span {
+        background-color: variable.$blue-color;
+        border-radius: 9999;
+        font-size: variable.$font-size-sm;
+        font-weight: 700;
+        padding: 0px 2px;
+        color: variable.$white-color;
+      }
+
+      .real-price {
+        font-weight: 700;
+        font-size: variable.$font-size-md;
+      }
+
+      .discount-price {
+        color: variable.$discount-price-color;
+        text-decoration: line-through;
+      }
+    }
+  }
+}

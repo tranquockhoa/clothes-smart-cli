@@ -1,0 +1,85 @@
+@use "../../../styles/variable.scss" as variable;
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #fff;
+
+  &--top {
+    background-color: #737373;
+    font-size: variable.$font-size-xs;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    padding: 0px 48px;
+    a {
+      color: variable.$text-secondary-color;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
+  &--middle {
+    padding: 0px 48px;
+    display: flex;
+    align-items: center;
+    height: 68px;
+    .label-left {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      a {
+        img {
+          width: 90px;
+          height: 50px;
+        }
+      }
+    }
+
+    .label-middle {
+      flex: 1;
+      ul {
+        display: flex;
+        justify-content: space-around;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        li {
+          a {
+            color: variable.$text-primary-color;
+          }
+        }
+      }
+    }
+
+    .label-right {
+      flex: 1;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  &--bottom {
+    background-color: #737373;
+    color: variable.$text-secondary-color;
+    font-size: variable.$font-size-sm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    padding: 0px 48px;
+
+    a {
+      color: variable.$text-secondary-color;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+}

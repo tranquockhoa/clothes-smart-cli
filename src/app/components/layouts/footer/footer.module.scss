@@ -1,0 +1,54 @@
+@use "../../../styles//variable.scss" as variable;
+
+.footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: variable.$black-color;
+  color: variable.$white-color;
+
+  .footer-container {
+    .footer__left {
+      h2 {
+        font-size: variable.$font-size-2xl;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: variable.$font-size-sm;
+        margin: 6px 0x 0px 0px;
+        line-height: 1.25rem;
+      }
+
+      button {
+        border-radius: 9999;
+        padding: 8px 24px;
+        margin: 20px 0px 0px;
+      }
+    }
+
+    .footer__center {
+      display: flex;
+      justify-content: center;
+
+      .wrap-contact {
+        margin: auto;
+        .footer__center--contact {
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .footer__right {
+      display: flex;
+      justify-content: flex-end;
+      gap: 2.5rem;
+      align-content: center;
+    }
+  }
+}

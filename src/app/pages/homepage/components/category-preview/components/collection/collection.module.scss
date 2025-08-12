@@ -1,0 +1,15 @@
+@use "../../../../../../styles/variable.scss" as variable;
+
+.product-preview {
+  margin-top: 60px;
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      text-decoration: underline;
+      color: variable.$text-primary-color;
+      font-size: variable.$font-size-sm;
+    }
+  }
+}

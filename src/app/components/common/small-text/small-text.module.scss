@@ -1,0 +1,9 @@
+@use "../../../styles/variable.scss" as variable;
+
+.small-text {
+  display: inline-block;
+  font-weight: 700;
+  border-radius: 9999;
+  background-color: variable.$blue-color;
+  color: variable.$white-color;
+}
