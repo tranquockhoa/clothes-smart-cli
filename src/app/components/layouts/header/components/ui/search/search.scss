@@ -1,0 +1,16 @@
+@use "../../../../../../styles/variable.scss" as variable;
+
+.search-content {
+  padding: 0;
+
+  .custom-html-input {
+    box-sizing: border-box;
+    height: 48px;
+    padding-left: 16px;
+    font-size: variable.$font-size-sm;
+  }
+
+  .custom-input {
+    border-radius: 9999px;
+  }
+}
