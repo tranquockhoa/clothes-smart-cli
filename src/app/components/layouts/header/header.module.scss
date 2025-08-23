@@ -21,6 +21,9 @@
       padding-left: 8px;
       padding-right: 8px;
     }
+    span {
+      color: rgba(209, 213, 219, 0.2);
+    }
   }
 
   &--middle {
@@ -28,6 +31,7 @@
     display: flex;
     align-items: center;
     height: 68px;
+
     .label-left {
       display: flex;
       align-items: center;
@@ -52,6 +56,7 @@
         li {
           a {
             color: variable.$text-primary-color;
+            font-weight: 700;
           }
         }
       }
@@ -75,11 +80,14 @@
     align-items: center;
     height: 32px;
     padding: 0px 48px;
+    font-weight: 500;
 
     a {
       color: variable.$text-secondary-color;
-      padding-left: 8px;
-      padding-right: 8px;
+      margin-left: 8px;
+    }
+    span {
+      margin-left: 8px;
     }
   }
 }

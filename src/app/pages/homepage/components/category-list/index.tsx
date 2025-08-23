@@ -1,5 +1,7 @@
+"use client";
 import { FC } from "react";
-import styles from "./category-list.module.scss";
+import "./category-list.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const data = [
   {
@@ -38,20 +40,22 @@ const data = [
 
 const CategoryList: FC = () => {
   return (
-    <div className={`${styles["category-list"]}`}>
-      <nav className={styles["category-list__wrap-button"]}>
+    <div className="category-list">
+      <nav className="category-list__wrap-button">
         <button>Nam</button>
         <button>Nữ</button>
       </nav>
-      <div className={styles["category-list__wrap-link"]}>
-        <div className={styles["category-list__wrap-link"]}>
+      <div className="category-list__wrap-link">
+        <Swiper slidesPerView={6} spaceBetween={10}>
           {data.map((item, id) => (
-            <a href="" key={id} className={styles["item"]}>
-              <img src={item.url} alt={item.name} />
-              <p>{item.name}</p>
-            </a>
+            <SwiperSlide key={id}>
+              <a href="" className="item">
+                <img src={item.url} alt={item.name} />
+                <p>{item.name}</p>
+              </a>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </div>
   );
