@@ -2,6 +2,7 @@
 import { FC } from "react";
 import "./category-list.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
+import MyButton from "@/app/components/ui/button";
 
 const data = [
   {
@@ -50,8 +51,10 @@ const CategoryList: FC = () => {
           {data.map((item, id) => (
             <SwiperSlide key={id}>
               <a href="" className="item">
-                <img src={item.url} alt={item.name} />
-                <p>{item.name}</p>
+                <div className="item--image">
+                  <img src={item.url} alt={item.name} />
+                </div>{" "}
+                <a href="">{item.name}</a>
               </a>
             </SwiperSlide>
           ))}

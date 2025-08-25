@@ -5,7 +5,7 @@ import LocalMallIcon from "@mui/icons-material/LocalMall";
 function Header() {
   return (
     <div className={styles["header-container"]}>
-      <div className={styles["header-container--top"]}>
+      <div id="header-top" className={styles["header-container--top"]}>
         <div className={styles["label-left"]}>
           <a href="">Về CLOTHES SMART</a>
           <span>|</span>

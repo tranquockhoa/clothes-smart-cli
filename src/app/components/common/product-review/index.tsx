@@ -1,8 +1,10 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./product-review.module.scss";
+import QuickAddToCart from "../quick-add-to-cart";
 
 interface ProductPreviewProps {
   url: string;
+  urlOnHover: string;
   name: string;
   price: string;
   discount: string;
@@ -10,10 +12,26 @@ interface ProductPreviewProps {
 }
 
 const ProductReview: FC<ProductPreviewProps> = (props) => {
+  const [isHover, setIsHover] = useState(false);
+  const [url, setUrl] = useState(props.url);
+  console.log(url);
   return (
     <div className={styles["product-review"]}>
       <a href="">
-        <img src={props.url} alt="" />
+        <div
+          className={styles["product-review__wrap-image"]}
+          onMouseLeave={() => {
+            setIsHover(false);
+            setUrl(props.url);
+          }}
+          onMouseOver={() => {
+            setIsHover(true);
+            setUrl(props.urlOnHover);
+          }}
+        >
+          {isHover && <QuickAddToCart />}
+          <img src={url} alt="" />
+        </div>
       </a>
 
       <div className={styles["item__des"]}>

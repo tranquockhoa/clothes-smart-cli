@@ -16,6 +16,8 @@
     align-items: center;
     height: 32px;
     padding: 0px 48px;
+    transition: height 2s;
+
     a {
       color: variable.$text-secondary-color;
       padding-left: 8px;
