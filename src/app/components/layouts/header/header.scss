@@ -16,8 +16,9 @@
     align-items: center;
     height: 32px;
     padding: 0px 48px;
-    transition: height 2s;
-
+    line-height: 0;
+    transition: all 0.2s ease;
+    overflow: hidden;
     a {
       color: variable.$text-secondary-color;
       padding-left: 8px;
@@ -26,6 +27,10 @@
     span {
       color: rgba(209, 213, 219, 0.2);
     }
+
+    &--top-hide {
+      display: none;
+    }
   }
 
   &--middle {
@@ -33,7 +38,10 @@
     display: flex;
     align-items: center;
     height: 68px;
-
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-bottom: 1px solid hsl(240, 5%, 83%);
     .label-left {
       display: flex;
       align-items: center;
@@ -83,6 +91,8 @@
     height: 32px;
     padding: 0px 48px;
     font-weight: 500;
+    overflow: hidden;
+    transition: all 0.2s ease;
 
     a {
       color: variable.$text-secondary-color;

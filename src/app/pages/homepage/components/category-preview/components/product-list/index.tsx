@@ -30,6 +30,9 @@ const datas = [
   },
 ];
 
+const urlOnHover =
+  "https://n7media.coolmate.me/uploads/August2025/combo-tank-top-va-quan-short-the-thao-tu-hao-viet-nam-1-21-navy-navy_77.jpg?aio=w-585";
+
 const ProductPreview: FC = () => {
   return (
     <div className={`${styles["product-preview"]} content`}>
@@ -48,7 +51,7 @@ const ProductPreview: FC = () => {
                 <SmallText text="NEW" className={styles["item--small--text"]} />
                 <ProductReview
                   url={data.url}
-                  urlOnHover={datas[4].url}
+                  urlOnHover={urlOnHover}
                   name="Áo ba lỗ nam mặc trong thoáng khí nhanh khô Excool"
                   price="399.000đ"
                   discount="16%"
