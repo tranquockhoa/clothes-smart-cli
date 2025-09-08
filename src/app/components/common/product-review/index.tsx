@@ -2,6 +2,10 @@ import { FC } from "react";
 import QuickAddToCart from "../quick-add-to-cart";
 import ButtonColor from "../button-color";
 import "./product-review.scss";
+import {
+  BUTTON_COLOR_SIZE_TYPES,
+  BUTTON_COLOR_OUTLINE_TYPES,
+} from "../button-color";
 
 interface ProductPreviewProps {
   url: string;
@@ -30,8 +34,16 @@ const ProductReview: FC<ProductPreviewProps> = (props) => {
 
       <div className={"item__des"}>
         <div className={"wrap-color"}>
-          <ButtonColor url="https://n7media.coolmate.me/uploads/June2025/ao-polo-premium-aircool-1221-be_copy.jpg?aio=w-100" />
-          <ButtonColor url="https://n7media.coolmate.me/uploads/June2025/ao-polo-premium-aircool-1221-be_copy.jpg?aio=w-100" />
+          <ButtonColor
+            size={BUTTON_COLOR_SIZE_TYPES.SMALL}
+            outline={BUTTON_COLOR_OUTLINE_TYPES.SMALL}
+            url="https://n7media.coolmate.me/uploads/June2025/ao-polo-premium-aircool-1221-be_copy.jpg?aio=w-100"
+          />
+          <ButtonColor
+            size={BUTTON_COLOR_SIZE_TYPES.SMALL}
+            outline={BUTTON_COLOR_OUTLINE_TYPES.SMALL}
+            url="https://n7media.coolmate.me/uploads/June2025/ao-polo-premium-aircool-1221-be_copy.jpg?aio=w-100"
+          />
         </div>
         <p>{props.name}</p>
         <div className={"price"}>
