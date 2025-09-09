@@ -10,8 +10,7 @@ import {
   BUTTON_COLOR_OUTLINE_TYPES,
 } from "@/app/components/common/button-color";
 import ButtonColor from "@/app/components/common/button-color";
-import ButtonSize from "../button-size";
-import { BUTTON_SIZES_SIZE_TYPES } from "@/app/components/common/button-size";
+import Link from "@mui/material/Link";
 
 const ProductDetailBody: FC = () => {
   return (
@@ -100,7 +99,7 @@ const ProductDetailBody: FC = () => {
             <p>
               Kích thước: <span>S</span>
             </p>
-            <div className="product-detail-body__right__sizes-list">
+            {/* <div className="product-detail-body__right__sizes-list">
               {["S", "M", "L"].map((size, index) => (
                 <ButtonSize
                   key={index}
@@ -112,7 +111,7 @@ const ProductDetailBody: FC = () => {
                   }}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
           <div className="product-detail-body__right__actions">
             <div className="qty-control">
@@ -142,6 +141,58 @@ const ProductDetailBody: FC = () => {
             >
               Thêm vào giỏ
             </MyButton>
+          </div>
+          <div className="product-detail-body__right__des">
+            <Link
+              sx={{
+                display: "block",
+                color: "#404040",
+                fontWeight: 600,
+                textDecoration: "underline solid black",
+                textAlign: "center",
+              }}
+            >
+              Mô tả sản phẩm
+            </Link>
+          </div>
+
+          <div className="product-detail-body__right__policy">
+            <div className="product-detail-body__right__policy--des">
+              <img
+                src="https://www.coolmate.me/icons/product/return.svg"
+                alt=""
+              />
+              <p>
+                Đổi trả cực dễ chỉ cần <br />
+                số điện thoại
+              </p>
+            </div>
+            <div className="product-detail-body__right__policy--des">
+              <img
+                src="	https://www.coolmate.me/icons/product/return-60.svg"
+                alt=""
+              />
+              <p>
+                60 ngày đổi trả (sản phẩm chưa qua sử dụng và còn nguyên nhãn
+                mác)
+              </p>
+            </div>
+            <div className="product-detail-body__right__policy--des">
+              <img
+                src="https://www.coolmate.me/icons/product/phone.svg"
+                alt=""
+              />
+              <p>
+                Hotline 1900.27.27.37 <br /> hỗ trợ từ 8h30 - 22h
+              </p>
+            </div>
+            <div className="product-detail-body__right__policy--des">
+              <img
+                src="https://www.coolmate.me/icons/product/location.svg"
+                alt=""
+              />
+              <p>Đến tận nơi nhận hàng trả, hoàn tiền trong 24h</p>
+            </div>
           </div>
         </div>
       </div>

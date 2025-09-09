@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import "./quick-add-to-cart.scss";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
