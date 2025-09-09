@@ -50,7 +50,9 @@ const CategoryList: FC = () => {
           {data.map((item, id) => (
             <SwiperSlide key={id}>
               <a href="" className="item">
-                <img src={item.url} alt={item.name} />
+                <div className="item--image">
+                  <img src={item.url} alt={item.name} />
+                </div>{" "}
                 <p>{item.name}</p>
               </a>
             </SwiperSlide>

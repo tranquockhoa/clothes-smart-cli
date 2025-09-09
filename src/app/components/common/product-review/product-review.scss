@@ -1,39 +1,63 @@
 @use "../../../styles//variable.scss" as variable;
 
 .product-review {
+  &__wrap-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    &--hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .quick-add-to-cart {
+      opacity: 0;
+    }
+
+    &:hover {
+      .product-review__wrap-image--hover {
+        opacity: 1;
+      }
+      .quick-add-to-cart {
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+  }
+
   .item__des {
     display: flex;
     flex-direction: column;
-    gap: 10;
+    gap: 10px;
+
     .wrap-color {
       display: flex;
-      justify-content: start;
-      gap: 2px;
-      margin-top: 12px;
-      margin-bottom: 8px;
-      button {
-        flex: 0 0 calc(100% / 8);
-        height: 22px;
-        padding: 0;
-        border: none;
-        background-image: url("https://n7media.coolmate.me/uploads/June2025/quan-bb-trunk-pc-logo-cm15-den.jpg?aio=w-160&quot");
-        cursor: pointer;
-        border-radius: 9999;
-      }
+      justify-content: flex-start;
+      gap: 5px;
+      margin: 12px 0 8px 0;
     }
 
     .price {
       display: flex;
-      gap: 4px;
-      justify-content: start;
       align-items: center;
       gap: 0.25rem;
+
       span {
         background-color: variable.$blue-color;
-        border-radius: 9999;
+        border-radius: 9999px;
         font-size: variable.$font-size-sm;
         font-weight: 700;
-        padding: 0px 2px;
+        padding: 0px 6px;
         color: variable.$white-color;
       }
 
