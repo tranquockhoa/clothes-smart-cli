@@ -1,6 +1,6 @@
 "use client";
 import { FC } from "react";
-import UpdateProfileForm from "../..";
+import UpdateProfileForm from "../../form";
 import MyButton from "@/app/components/ui/button";
 import React from "react";
 

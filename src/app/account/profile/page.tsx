@@ -1,8 +1,8 @@
 import React from "react";
 import "./page.scss";
 import MyButton from "@/app/components/ui/button";
-import ProfileInfoList from "./form/_components/profile-info-list";
-import PopupEditProfile from "./form/_components/popup-edit-profile";
+import ProfileInfoList from "./_components/profile-info-list";
+import PopupEditProfile from "./_components/popup-edit-profile";
 
 export default function Profile() {
   return (
