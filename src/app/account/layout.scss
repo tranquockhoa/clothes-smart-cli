@@ -1,0 +1,19 @@
+@use "../../app/styles/variable.scss" as *;
+
+.body {
+  padding: 3.75rem;
+  background-color: $neutral-200;
+}
+
+.account-layout {
+  display: flex;
+  gap: 4.25rem;
+
+  &__children {
+    width: 100%;
+    min-height: 540px;
+    background-color: $white-color;
+    border-radius: 0.5rem;
+    padding: 3.5rem 4rem;
+  }
+}

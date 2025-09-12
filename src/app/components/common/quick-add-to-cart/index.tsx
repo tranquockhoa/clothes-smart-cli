@@ -1,8 +1,12 @@
+"use client";
 import { FC } from "react";
 import "./quick-add-to-cart.scss";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/material";
-import ButtonSize, { BUTTON_SIZES_SIZE_TYPES } from "../button-size";
+import ButtonSize, {
+  BUTTON_SIZES_SIZE_TYPES,
+  BUTTON_SIZES_COLOR_TYPES,
+} from "../button-size";
 import { useState } from "react";
 
 const QuickAddToCart: FC = () => {
@@ -18,6 +22,7 @@ const QuickAddToCart: FC = () => {
             {sizeList.map((size, index) => (
               <Grid key={index}>
                 <ButtonSize
+                  customBackgroundColor={BUTTON_SIZES_COLOR_TYPES.PRIMARY}
                   className={`quick-add-to-cart__wrap-size--button ${selectedSize === size ? "quick-add-to-cart__wrap-size--button-active" : ""}`}
                   customSize={BUTTON_SIZES_SIZE_TYPES.SMALL}
                   sizeName={size}

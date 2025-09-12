@@ -1,0 +1,30 @@
+@use "../../../styles/variable.scss" as *;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &__btn {
+    display: flex;
+    align-items: center;
+    width: 220px;
+    justify-content: space-between;
+
+    &__title {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 29px;
+        height: 29px;
+      }
+      p {
+        color: $white-color;
+      }
+    }
+    &--link {
+      text-decoration: none;
+      color: $white-color;
+    }
+  }
+}

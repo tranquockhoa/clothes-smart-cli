@@ -30,28 +30,20 @@ const SIZE_TYPES = {
   },
 };
 
-const OUTLINE_TYPES = {
-  [BUTTON_COLOR_OUTLINE_TYPES.SMALL]: {
-    outline: "1px solid #525252",
-  },
-  [BUTTON_COLOR_OUTLINE_TYPES.MIDDLE]: {
-    outline: "2px solid #525252",
-  },
-};
 const ButtonColor: FC<ButtonColorProps> = (props) => {
   // const { width, height } = SIZE_TYPES[props.size];
 
   return (
     <MyButton
-      // className="button-color"
+      className="button-color"
       sx={{
         width: SIZE_TYPES[props.size].width,
         height: SIZE_TYPES[props.size].height,
-        outline: OUTLINE_TYPES[props.outline].outline,
-        padding: "1px",
+
+        padding: "2px",
         minWidth: "unset",
         borderRadius: "9999px",
-        border: "1px solid white",
+        border: "2px solid black",
         overflow: "hidden",
       }}
     >
