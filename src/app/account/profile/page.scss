@@ -1,0 +1,36 @@
+@use "../../styles/variable.scss" as *;
+
+.profile {
+  &__title {
+    font-size: $font-size-3xl;
+  }
+
+  &__info__item {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+
+    &__lable {
+      width: 210px;
+      p {
+        color: gray;
+      }
+    }
+
+    &__value {
+      p {
+        color: $gray-color-52;
+      }
+    }
+
+    &__btn:hover {
+      background-color: black;
+      color: $white-color;
+    }
+  }
+
+  &__account {
+    font-size: $font-size-xl;
+    margin: 2rem 0 1.5rem;
+  }
+}

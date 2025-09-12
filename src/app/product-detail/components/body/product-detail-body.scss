@@ -7,6 +7,7 @@
   &__left {
     display: flex;
     gap: 1rem;
+    height: 720px;
 
     &-wrap-btn {
       margin-bottom: 0.5rem;
@@ -18,11 +19,11 @@
       gap: 0.5rem;
 
       .product-detail-body__thumb {
-        width: 60px;
+        width: 50px;
         height: 60px;
         border: 1px solid #ddd;
         border-radius: 6px;
-        overflow: hidden;
+        object-fit: contain;
         cursor: pointer;
 
         img {
@@ -157,6 +158,11 @@
         gap: 0.625rem;
         .size-btn {
           background-color: #d1d1d1;
+        }
+
+        &--btn:hover {
+          background-color: variable.$black-color;
+          color: variable.$white-color;
         }
       }
     }
