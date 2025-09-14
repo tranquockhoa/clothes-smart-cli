@@ -1,0 +1,15 @@
+@use "../styles/variable.scss" as *;
+
+.cart {
+  padding: 60px;
+  display: flex;
+
+  gap: 20px;
+  &__left {
+    flex: 1;
+  }
+
+  &__right {
+    flex: 1;
+  }
+}

@@ -1,0 +1,121 @@
+"use client";
+
+import { FC } from "react";
+import {
+  Box,
+  Typography,
+  IconButton,
+  Select,
+  MenuItem,
+  Checkbox,
+  Button,
+} from "@mui/material";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+
+interface CartItemProps {
+  image: string;
+  name: string;
+  brand: string;
+  size: string;
+  quantity: number;
+  price: number;
+  oldPrice?: number;
+  onQuantityChange?: (q: number) => void;
+  onRemove?: () => void;
+}
+
+const CartItem: FC<CartItemProps> = ({
+  image,
+  name,
+  brand,
+  size,
+  quantity,
+  price,
+  oldPrice,
+  onQuantityChange,
+  onRemove,
+}) => {
+  return (
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+      borderBottom="1px solid #eee"
+      py={2}
+      gap={2}
+    >
+      {/* Checkbox + Hình */}
+      <Box display="flex" alignItems="center" gap={2} flex={1}>
+        <Checkbox />
+        <Box
+          component="img"
+          src={image}
+          alt={name}
+          sx={{ width: 80, height: 100, objectFit: "cover", borderRadius: 2 }}
+        />
+        <Box display="flex" flexDirection="column">
+          <Typography fontWeight={500}>{name}</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {brand} / {size}
+          </Typography>
+
+          {/* Dropdown brand & size */}
+          <Box display="flex" gap={1} mt={1}>
+            <Select size="small" value={brand}>
+              <MenuItem value={brand}>{brand}</MenuItem>
+              <MenuItem value="Other">Other</MenuItem>
+            </Select>
+            <Select size="small" value={size}>
+              <MenuItem value="M">M</MenuItem>
+              <MenuItem value="L">L</MenuItem>
+              <MenuItem value="XL">XL</MenuItem>
+            </Select>
+          </Box>
+
+          {/* Xóa */}
+          <Button
+            startIcon={<DeleteOutlineIcon />}
+            color="inherit"
+            onClick={onRemove}
+            sx={{ mt: 1, textTransform: "none", fontSize: "0.85rem" }}
+          >
+            Xóa
+          </Button>
+        </Box>
+      </Box>
+
+      {/* Quantity */}
+      <Box display="flex" alignItems="center" gap={1}>
+        <IconButton
+          size="small"
+          onClick={() => onQuantityChange?.(Math.max(1, quantity - 1))}
+        >
+          <RemoveIcon />
+        </IconButton>
+        <Typography>{quantity}</Typography>
+        <IconButton size="small" onClick={() => onQuantityChange?.(quantity + 1)}>
+          <AddIcon />
+        </IconButton>
+      </Box>
+
+      {/* Giá */}
+      <Box textAlign="right" minWidth={120}>
+        <Typography fontWeight={600}>
+          {price.toLocaleString("vi-VN")}đ
+        </Typography>
+        {oldPrice && (
+          <Typography
+            variant="body2"
+            sx={{ textDecoration: "line-through", color: "text.secondary" }}
+          >
+            {oldPrice.toLocaleString("vi-VN")}đ
+          </Typography>
+        )}
+      </Box>
+    </Box>
+  );
+};
+
+export default CartItem;
