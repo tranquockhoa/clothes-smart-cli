@@ -195,9 +195,14 @@ const RegisterForm: FC = () => {
         >
           Đăng nhập
         </div>
-        <a className="login-form__link" href="">
+        <div
+          className="login-form__link"
+          onClick={() => {
+            dispatch(setCurrentForm("forgotpassword"));
+          }}
+        >
           Quên mật khẩu
-        </a>
+        </div>
       </DialogActions>
 
       <IconButton

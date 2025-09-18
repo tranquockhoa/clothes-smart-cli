@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "..";
 
 interface authPopupState {
-  currentForm: "login" | "register";
+  currentForm: "login" | "register" | "forgotpassword";
   open: boolean;
 }
 
@@ -21,10 +21,14 @@ export const authPopupSlide = createSlice({
     setPopupStatus: (state, action) => {
       state.open = action.payload;
     },
+    resetCurrentForm: (state) => {
+      state.currentForm = "login";
+    },
   },
 });
 
-export const { setCurrentForm, setPopupStatus } = authPopupSlide.actions;
+export const { setCurrentForm, resetCurrentForm, setPopupStatus } =
+  authPopupSlide.actions;
 export const selectCurrentForm = (state: RootState) =>
   state.authPopup.currentForm;
 export const selectOpen = (state: RootState) => state.authPopup.open;

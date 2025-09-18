@@ -50,7 +50,7 @@ const LoginForm: FC = () => {
           required
           margin="dense"
           id="name"
-          name="email"
+          name="name"
           label="Nhập địa chỉ email"
           type="email"
           fullWidth
@@ -150,7 +150,14 @@ const LoginForm: FC = () => {
         >
           Đăng kí tài khoản mới
         </div>
-        <div className="login-form__link">Quên mật khẩu</div>
+        <div
+          className="login-form__link"
+          onClick={() => {
+            dispatch(setCurrentForm("forgotpassword"));
+          }}
+        >
+          Quên mật khẩu
+        </div>
       </DialogActions>
 
       <IconButton

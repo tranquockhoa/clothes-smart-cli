@@ -9,7 +9,12 @@ import LoginForm from "./_components/login-form";
 import { IconButton } from "@mui/material";
 import RegisterForm from "./_components/register-form";
 import { useAppSelector, useAppDispatch } from "@/app/hooks";
-import { setPopupStatus } from "@/app/store/auth-popup/auth-pupop.store";
+import {
+  resetCurrentForm,
+  setPopupStatus,
+} from "@/app/store/auth-popup/auth-pupop.store";
+import ForgotPassword from "./_components/forgot-password";
+
 // interface AuthPopupProps {
 //   isOpen: boolean;
 //   onClose: () => void;
@@ -21,12 +26,16 @@ const AuthPopup: FC = () => {
 
   const onClose = () => {
     dispatch(setPopupStatus(false));
+    dispatch(resetCurrentForm());
   };
   const currentForm = useAppSelector((state) => state.authPopup.currentForm);
   const rederForm = () => {
     switch (currentForm) {
       case "register":
         return <RegisterForm />;
+
+      case "forgotpassword":
+        return <ForgotPassword />;
 
       default:
         return <LoginForm />;
@@ -48,7 +57,7 @@ const AuthPopup: FC = () => {
         onClose={onClose}
         className="login-form"
       >
-        <DialogContent>{rederForm()}</DialogContent>
+        <DialogContent sx={{ minWidth: "500px" }}>{rederForm()}</DialogContent>
 
         <IconButton
           sx={{
