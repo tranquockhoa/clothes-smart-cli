@@ -1,0 +1,7 @@
+@use "../../../../../styles/variable.scss" as *;
+
+.login-form {
+  &__link {
+    color: blue;
+  }
+}
