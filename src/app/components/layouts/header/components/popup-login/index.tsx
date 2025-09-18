@@ -1,30 +1,27 @@
 "use client";
 import { FC } from "react";
-import LoginForm from "../login-form";
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
+import AuthPopup from "../auth-popup";
+import { useAppDispatch } from "@/app/hooks";
+import { setPopupStatus } from "@/app/store/auth-popup/auth-pupop.store";
 
 const PopupLogin: FC = () => {
-  const [open, setOpen] = React.useState(false);
-
+  const dispatch = useAppDispatch();
   const handleClickOpen = () => {
     console.log("handle open");
-    setOpen(true);
+    dispatch(setPopupStatus(true));
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   dispatch(setPopupStatus(false));
+  // };
 
   return (
     <div>
       {" "}
       <PersonIcon sx={{ cursor: "pointer" }} onClick={handleClickOpen} />
-      <LoginForm
-        isOpen={open}
-        onClickOpen={handleClickOpen}
-        onClose={handleClose}
-      />
+      <AuthPopup />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import "@/app/styles/global.scss";
 import React from "react";
 import Footer from "./components/layouts/footer";
 import Header from "./components/layouts/header";
+import { ReduxProvider } from "./redux-provider";
 
 export const metadata: Metadata = {
   title: "Clothes smart",
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main style={{ paddingTop: "132px" }}> {children}</main>
-        <Footer />
+        <ReduxProvider>
+          <Header />
+          <main style={{ paddingTop: "132px" }}> {children}</main>
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );
