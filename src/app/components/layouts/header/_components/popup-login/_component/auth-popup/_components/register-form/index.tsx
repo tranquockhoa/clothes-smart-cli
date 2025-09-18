@@ -3,10 +3,12 @@
 import { FC } from "react";
 import * as React from "react";
 import DialogActions from "@mui/material/DialogActions";
-import "./login-form.scss";
+import "./register-form.scss";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import CloseIcon from "@mui/icons-material/Close";
+import DialogTitle from "@mui/material/DialogTitle";
+
 import {
   FormControl,
   IconButton,
@@ -16,12 +18,13 @@ import {
   TextField,
 } from "@mui/material";
 import MyButton from "@/app/components/ui/button";
-
 import { useAppDispatch } from "@/app/hooks";
 import { setCurrentForm } from "@/app/store/auth-popup/auth-pupop.store";
 
-const LoginForm: FC = () => {
+const RegisterForm: FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
+
+  const dispatch = useAppDispatch();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -37,15 +40,60 @@ const LoginForm: FC = () => {
     event.preventDefault();
   };
 
-  const dispatch = useAppDispatch();
   return (
-    <div className="login-form">
+    <div className="register-form">
+      <DialogTitle>
+        <h2>Đăng kí tài khoản</h2>
+      </DialogTitle>
       <form>
+        <div className="register-form__info">
+          <TextField
+            autoFocus
+            required
+            margin="dense"
+            id="full-name"
+            name="full-name"
+            label="Nhập họ và tên"
+            type="text"
+            fullWidth
+            variant="outlined"
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                borderRadius: 9999,
+              },
+
+              "& .MuiOutlinedInput-input": {
+                padding: "12px 24px",
+              },
+            }}
+          ></TextField>
+          <TextField
+            autoFocus
+            required
+            margin="dense"
+            id="phone-number"
+            name="phone-number"
+            label="Nhập số điện thoại"
+            type=""
+            fullWidth
+            variant="outlined"
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                borderRadius: 9999,
+              },
+
+              "& .MuiOutlinedInput-input": {
+                padding: "12px 24px",
+              },
+            }}
+          ></TextField>
+        </div>
+
         <TextField
           autoFocus
           required
           margin="dense"
-          id="name"
+          id="email"
           name="email"
           label="Nhập địa chỉ email"
           type="email"
@@ -61,6 +109,7 @@ const LoginForm: FC = () => {
             },
           }}
         ></TextField>
+
         <FormControl
           required
           sx={{
@@ -138,15 +187,14 @@ const LoginForm: FC = () => {
           color: "blue",
         }}
       >
-        <a
+        <div
           className="login-form__link"
-          href=""
           onClick={() => {
-            dispatch(setCurrentForm("register"));
+            dispatch(setCurrentForm("login"));
           }}
         >
-          Đăng kí tài khoản mới
-        </a>
+          Đăng nhập
+        </div>
         <a className="login-form__link" href="">
           Quên mật khẩu
         </a>
@@ -173,4 +221,4 @@ const LoginForm: FC = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

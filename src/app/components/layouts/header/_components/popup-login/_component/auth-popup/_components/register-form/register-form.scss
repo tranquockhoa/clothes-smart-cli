@@ -1,0 +1,8 @@
+@use "../../../../../../../../../styles/variable.scss" as *;
+
+.register-form {
+  &__info {
+    display: flex;
+    gap: 10px;
+  }
+}

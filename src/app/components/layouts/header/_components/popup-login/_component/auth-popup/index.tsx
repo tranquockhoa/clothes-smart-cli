@@ -4,11 +4,10 @@ import { FC } from "react";
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
-import LoginForm from "../login-form";
+import LoginForm from "./_components/login-form";
 import { IconButton } from "@mui/material";
-import RegisterForm from "../register-form";
+import RegisterForm from "./_components/register-form";
 import { useAppSelector, useAppDispatch } from "@/app/hooks";
 import { setPopupStatus } from "@/app/store/auth-popup/auth-pupop.store";
 // interface AuthPopupProps {
@@ -49,48 +48,7 @@ const AuthPopup: FC = () => {
         onClose={onClose}
         className="login-form"
       >
-        <DialogTitle>
-          <h2>Đăng nhập</h2>
-        </DialogTitle>
         <DialogContent>{rederForm()}</DialogContent>
-
-        {/* <DialogActions
-          sx={{
-            padding: "0px 24px 10px",
-            fontSize: "12px",
-            display: "flex",
-            justifyContent: "space-between",
-            color: "blue",
-          }}
-        >
-          <MyButton
-            sx={{
-              width: "100%",
-              color: "white",
-              backgroundColor: "black",
-              borderRadius: 9999,
-            }}
-          >
-            Đăng nhập
-          </MyButton>
-        </DialogActions>
-
-        <DialogActions
-          sx={{
-            padding: "0px 24px 20px",
-            fontSize: "12px",
-            display: "flex",
-            justifyContent: "space-between",
-            color: "blue",
-          }}
-        >
-          <a className="login-form__link" href="">
-            Đăng kí tài khoản mới
-          </a>
-          <a className="login-form__link" href="">
-            Quên mật khẩu
-          </a>
-        </DialogActions> */}
 
         <IconButton
           sx={{

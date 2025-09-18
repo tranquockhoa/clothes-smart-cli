@@ -2,7 +2,7 @@
 import { FC } from "react";
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
-import AuthPopup from "../auth-popup";
+import AuthPopup from "./_component/auth-popup";
 import { useAppDispatch } from "@/app/hooks";
 import { setPopupStatus } from "@/app/store/auth-popup/auth-pupop.store";
 
