@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use client";
 
 import { FC } from "react";
@@ -11,6 +12,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import "./update-form.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
+import MySlider from "../_components/slider";
+import { SLIDER_TYPES } from "../_components/slider";
+import BasicDatePicker from "../_components/date-picker";
 
 import {
   FormControl,
@@ -34,17 +38,6 @@ enum GenderEnum {
   other = "khác",
 }
 
-type Inputs = {
-  name: string;
-  phone: number;
-  gender: GenderEnum;
-  dateOfBirth: Date;
-  height: number;
-  weight: number;
-  email: string;
-  password: string;
-};
-
 interface IFormInput {
   firstName: string;
   gender: GenderEnum;
@@ -60,7 +53,10 @@ const UpdateProfileForm: FC<UpdateProfileFormProps> = ({ isOpen, onClose }) => {
           <h2>Chỉnh sửa thông tin tài khoản</h2>
         </DialogTitle>
         <DialogContent className="update-profile__dialog-content">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="update-profile__dialog-content__form"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <FormControl fullWidth sx={{ m: 1 }}>
               <InputLabel htmlFor="full-name">Họ và tên</InputLabel>
               <OutlinedInput
@@ -104,6 +100,8 @@ const UpdateProfileForm: FC<UpdateProfileFormProps> = ({ isOpen, onClose }) => {
               </RadioGroup>
             </FormControl>
 
+            <BasicDatePicker />
+
             <FormControl fullWidth sx={{ m: 1 }}>
               <InputLabel htmlFor="phonenumber">Số điện thoại</InputLabel>
               <OutlinedInput
@@ -121,6 +119,9 @@ const UpdateProfileForm: FC<UpdateProfileFormProps> = ({ isOpen, onClose }) => {
                 }
               />
             </FormControl>
+
+            <MySlider name="Chiều cao" unit="cm" type={SLIDER_TYPES.HEIGHT} />
+            <MySlider name="Cân nặng" unit="kg" type={SLIDER_TYPES.WEIGHT} />
           </form>
         </DialogContent>
         <DialogActions>

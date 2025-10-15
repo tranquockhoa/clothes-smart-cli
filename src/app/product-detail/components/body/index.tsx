@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use client";
 import { Container } from "@mui/material";
 import { FC, useState } from "react";
