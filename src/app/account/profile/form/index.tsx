@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use client";
 
 import { FC } from "react";
@@ -36,17 +37,6 @@ enum GenderEnum {
   male = "nữ",
   other = "khác",
 }
-
-type Inputs = {
-  name: string;
-  phone: number;
-  gender: GenderEnum;
-  dateOfBirth: Date;
-  height: number;
-  weight: number;
-  email: string;
-  password: string;
-};
 
 interface IFormInput {
   firstName: string;
