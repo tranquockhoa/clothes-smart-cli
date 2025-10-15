@@ -46,6 +46,7 @@ interface IFormInput {
 const UpdateProfileForm: FC<UpdateProfileFormProps> = ({ isOpen, onClose }) => {
   const { handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
   return (
     <React.Fragment>
       <Dialog open={isOpen} onClose={onClose} className="update-profile">
