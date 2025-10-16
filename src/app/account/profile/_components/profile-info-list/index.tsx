@@ -1,6 +1,18 @@
-import { FC } from "react";
+"use client";
+import { AppDispatch, RootState } from "@/app/store";
+import { getUsersProfileRequest } from "@/app/store/profile/profile.action";
+import { FC, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProfileInfoList: FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { profile } = useSelector((state: RootState) => state.profile);
+  const profileData = profile?.data;
+
+  useEffect(() => {
+    dispatch(getUsersProfileRequest());
+  }, [dispatch]);
+
   return (
     <div className="profile__info__list">
       <div className="profile__info__item">
@@ -8,7 +20,7 @@ const ProfileInfoList: FC = () => {
           <p>Họ và tên</p>
         </div>
         <div className="profile__info__item__value">
-          <p>Khoa trần</p>
+          <p>{profileData?.name ?? ""}</p>
         </div>
       </div>
       <div className="profile__info__item">
@@ -16,7 +28,7 @@ const ProfileInfoList: FC = () => {
           <p>Số điện thoại</p>
         </div>
         <div className="profile__info__item__value">
-          <p>0886719412</p>
+          <p>{profileData?.phone}</p>
         </div>
       </div>
       <div className="profile__info__item">
@@ -24,7 +36,7 @@ const ProfileInfoList: FC = () => {
           <p>Giới tính</p>
         </div>
         <div className="profile__info__item__value">
-          <p>Không tiết lộ</p>
+          <p>{profileData?.gender}</p>
         </div>
       </div>
       <div className="profile__info__item">
@@ -32,7 +44,7 @@ const ProfileInfoList: FC = () => {
           <p>Ngày sinh</p>
         </div>
         <div className="profile__info__item__value">
-          <p>01/01/2001</p>
+          <p>{profileData?.dob}</p>
         </div>
       </div>
       <div className="profile__info__item">
