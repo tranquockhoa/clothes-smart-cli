@@ -8,7 +8,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import "./update-form.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -25,6 +25,10 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/app/store";
+import { getUsersProfileRequest } from "@/app/store/profile/profile.action";
+import { IUser } from "@/app/interface/user";
 
 interface UpdateProfileFormProps {
   isOpen: boolean;
@@ -38,14 +42,21 @@ enum GenderEnum {
   other = "khác",
 }
 
-interface IFormInput {
-  firstName: string;
-  gender: GenderEnum;
-}
-
 const UpdateProfileForm: FC<UpdateProfileFormProps> = ({ isOpen, onClose }) => {
-  const { handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const dispatch = useDispatch<AppDispatch>();
+  const { profile } = useSelector((state: RootState) => state.profile);
+  const { control, handleSubmit } = useForm<IUser>({
+    defaultValues: {
+      name: profile?.data.name,
+      phone: profile?.data.phone,
+      gender: profile?.data.gender,
+      dob: profile?.data.dob,
+    },
+  });
+  const onSubmit: SubmitHandler<IUser> = (data) => console.log(data);
+  React.useEffect(() => {
+    dispatch(getUsersProfileRequest());
+  }, [dispatch]);
 
   return (
     <React.Fragment>
@@ -58,71 +69,103 @@ const UpdateProfileForm: FC<UpdateProfileFormProps> = ({ isOpen, onClose }) => {
             className="update-profile__dialog-content__form"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <FormControl fullWidth sx={{ m: 1 }}>
-              <InputLabel htmlFor="full-name">Họ và tên</InputLabel>
-              <OutlinedInput
-                id="full-name"
-                label="Họ và tên"
-                sx={{
-                  "& fieldset": {
-                    borderRadius: "9999px",
-                  },
-                }}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <PersonIcon />
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
+            <Controller
+              control={control}
+              name="name"
+              render={({ field }) => {
+                return (
+                  <FormControl fullWidth sx={{ m: 1 }}>
+                    <InputLabel htmlFor="full-name">Họ và tên</InputLabel>
+                    <OutlinedInput
+                      {...field}
+                      id="full-name"
+                      label="Họ và tên"
+                      sx={{
+                        "& fieldset": {
+                          borderRadius: "9999px",
+                        },
+                      }}
+                      startAdornment={
+                        <InputAdornment position="start">
+                          <PersonIcon />
+                        </InputAdornment>
+                      }
+                    />
+                  </FormControl>
+                );
+              }}
+            />
 
-            <FormControl className="update-profile__dialog-content__gender">
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="female"
-                name="radio-buttons-group"
-                sx={{ display: "flex", flexDirection: "row" }}
-              >
-                <FormControlLabel
-                  value={GenderEnum.female}
-                  control={<Radio />}
-                  label={GenderEnum.female}
-                />
-                <FormControlLabel
-                  value={GenderEnum.male}
-                  control={<Radio />}
-                  label={GenderEnum.male}
-                />
-                <FormControlLabel
-                  value={GenderEnum.other}
-                  control={<Radio />}
-                  label={GenderEnum.other}
-                />
-              </RadioGroup>
-            </FormControl>
+            <Controller
+              control={control}
+              name="gender"
+              render={({ field }) => {
+                return (
+                  <FormControl className="update-profile__dialog-content__gender">
+                    <RadioGroup
+                      {...field}
+                      aria-labelledby="demo-radio-buttons-group-label"
+                      defaultValue="female"
+                      name="radio-buttons-group"
+                      sx={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <FormControlLabel
+                        value={GenderEnum.female}
+                        control={<Radio />}
+                        label={GenderEnum.female}
+                      />
+                      <FormControlLabel
+                        value={GenderEnum.male}
+                        control={<Radio />}
+                        label={GenderEnum.male}
+                      />
+                      <FormControlLabel
+                        value={GenderEnum.other}
+                        control={<Radio />}
+                        label={GenderEnum.other}
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                );
+              }}
+            />
 
-            <BasicDatePicker />
+            <Controller
+              control={control}
+              name="dob"
+              render={({ field }) => {
+                return <BasicDatePicker {...field} />;
+              }}
+            />
+            <Controller
+              control={control}
+              name="phone"
+              render={({ field }) => {
+                return (
+                  <FormControl fullWidth sx={{ m: 1 }}>
+                    <InputLabel htmlFor="phonenumber">Số điện thoại</InputLabel>
+                    <OutlinedInput
+                      {...field}
+                      id="phonenumber"
+                      label="Số điện thoại"
+                      sx={{
+                        "& fieldset": {
+                          borderRadius: "9999px",
+                        },
+                      }}
+                      startAdornment={
+                        <InputAdornment position="start">
+                          <PhoneIcon />
+                        </InputAdornment>
+                      }
+                    />
+                  </FormControl>
+                );
+              }}
+            />
 
-            <FormControl fullWidth sx={{ m: 1 }}>
-              <InputLabel htmlFor="phonenumber">Số điện thoại</InputLabel>
-              <OutlinedInput
-                id="phonenumber"
-                label="Số điện thoại"
-                sx={{
-                  "& fieldset": {
-                    borderRadius: "9999px",
-                  },
-                }}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <PhoneIcon />
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-
-            <MySlider name="Chiều cao" unit="cm" type={SLIDER_TYPES.HEIGHT} />
-            <MySlider name="Cân nặng" unit="kg" type={SLIDER_TYPES.WEIGHT} />
+            {/* <MySlider name="Chiều cao" unit="cm" type={SLIDER_TYPES.HEIGHT} />
+            <MySlider name="Cân nặng" unit="kg" type={SLIDER_TYPES.WEIGHT} /> */}
           </form>
         </DialogContent>
         <DialogActions>

@@ -18,11 +18,20 @@ import {
 } from "@mui/material";
 import MyButton from "@/app/components/ui/button";
 
-import { useAppDispatch } from "@/app/hooks";
-import { setCurrentForm } from "@/app/store/auth-popup/auth-pupop.store";
+import {
+  setCurrentForm,
+  setPopupStatus,
+} from "@/app/store/auth-popup/auth-pupop.store";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { ILoginParams } from "@/app/interface/auth";
+import { loginApi } from "@/app/api/auth.api";
+import { useDispatch } from "react-redux";
+import { setLoginState } from "@/app/store/login/login.store";
 
 const LoginForm: FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
+  const { control, handleSubmit } = useForm<ILoginParams>();
+  const dispatch = useDispatch();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -38,100 +47,131 @@ const LoginForm: FC = () => {
     event.preventDefault();
   };
 
-  const dispatch = useAppDispatch();
+  const onSubmit: SubmitHandler<ILoginParams> = async (values) => {
+    try {
+      const res = await loginApi(values);
+      if (res.status) {
+        localStorage.setItem("token", res.data.accessToken);
+        dispatch(setPopupStatus(false));
+        dispatch(setLoginState(true));
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+    }
+  };
+
   return (
     <div className="login-form">
       <DialogTitle>
         <h2>Đăng nhập</h2>
       </DialogTitle>
-      <form>
-        <TextField
-          autoFocus
-          required
-          margin="dense"
-          id="name"
-          name="name"
-          label="Nhập địa chỉ email"
-          type="email"
-          fullWidth
-          variant="outlined"
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              borderRadius: 9999,
-            },
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="email"
+          control={control}
+          render={({ field }) => {
+            return (
+              <TextField
+                {...field}
+                autoFocus
+                required
+                margin="dense"
+                label="Nhập địa chỉ email"
+                type="email"
+                fullWidth
+                variant="outlined"
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: 9999,
+                  },
 
-            "& .MuiOutlinedInput-input": {
-              padding: "12px 24px",
-            },
+                  "& .MuiOutlinedInput-input": {
+                    padding: "12px 24px",
+                  },
+                }}
+              ></TextField>
+            );
           }}
-        ></TextField>
-        <FormControl
-          required
-          sx={{
-            m: 1,
-            width: "100%",
-            padding: 0,
-            margin: 0,
-            marginTop: "10px",
-            borderRadius: 9999,
-          }}
-          variant="outlined"
-        >
-          <InputLabel htmlFor="outlined-adornment-password">
-            Nhập mật khẩu
-          </InputLabel>
-          <OutlinedInput
-            sx={{
-              borderRadius: "9999px",
+        />
 
-              "& .MuiOutlinedInput-input": {
-                padding: "12px 24px",
-              },
-            }}
-            id="outlined-adornment-password"
-            type={showPassword ? "text" : "password"}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={
-                    showPassword ? "hide the password" : "display the password"
+        <Controller
+          control={control}
+          name="password"
+          render={({ field }) => {
+            return (
+              <FormControl
+                required
+                sx={{
+                  m: 1,
+                  width: "100%",
+                  padding: 0,
+                  margin: 0,
+                  marginTop: "10px",
+                  borderRadius: 9999,
+                }}
+                variant="outlined"
+              >
+                <InputLabel htmlFor="outlined-adornment-password">
+                  Nhập mật khẩu
+                </InputLabel>
+                <OutlinedInput
+                  {...field}
+                  sx={{
+                    borderRadius: "9999px",
+
+                    "& .MuiOutlinedInput-input": {
+                      padding: "12px 24px",
+                    },
+                  }}
+                  id="outlined-adornment-password"
+                  type={showPassword ? "text" : "password"}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label={
+                          showPassword
+                            ? "hide the password"
+                            : "display the password"
+                        }
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        onMouseUp={handleMouseUpPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
                   }
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  onMouseUp={handleMouseUpPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Nhập mật khẩu"
-          />
-        </FormControl>
-      </form>
-
-      <DialogActions
-        sx={{
-          padding: 0,
-          marginTop: "10px",
-          fontSize: "12px",
-          display: "flex",
-          justifyContent: "space-between",
-          color: "blue",
-        }}
-      >
-        <MyButton
+                  label="Nhập mật khẩu"
+                />
+              </FormControl>
+            );
+          }}
+        />
+        <DialogActions
           sx={{
-            height: "40px",
-            width: "100%",
-            color: "white",
-            backgroundColor: "black",
-            borderRadius: 9999,
+            padding: 0,
+            marginTop: "10px",
+            fontSize: "12px",
+            display: "flex",
+            justifyContent: "space-between",
+            color: "blue",
           }}
         >
-          Đăng nhập
-        </MyButton>
-      </DialogActions>
+          <MyButton
+            type="submit"
+            sx={{
+              height: "40px",
+              width: "100%",
+              color: "white",
+              backgroundColor: "black",
+              borderRadius: 9999,
+            }}
+          >
+            Đăng nhập
+          </MyButton>
+        </DialogActions>
+      </form>
 
       <DialogActions
         sx={{
