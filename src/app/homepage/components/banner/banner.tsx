@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./banner.module.scss";
 
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -8,27 +8,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/app/store";
+import { getActiveBannerRequest } from "@/app/store/banners/banner.action";
+import { CONFIG } from "@/app/config/env";
+import { ADMIN_FILES } from "@/app/api/endpoint";
 
-interface Slide {
-  id: number;
-  title: string;
-  tagline: string;
-  image: string;
-  buttons: ButtonProps[];
-}
+const Banner: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { banners } = useSelector((state: RootState) => state.banners);
 
-interface ButtonProps {
-  id: number;
-  text: string;
-  link: string;
-  type: string;
-}
+  const bannerList = banners?.data;
 
-interface DemoSliderProps {
-  data: Slide[];
-}
+  useEffect(() => {
+    dispatch(getActiveBannerRequest());
+  }, []);
 
-const Banner: React.FC<DemoSliderProps> = ({ data }) => {
+  useEffect(() => {
+    if (banners) {
+      console.log(banners.data[0]._id);
+    }
+  }, [banners]);
+
   return (
     <section className={styles["banner"]}>
       <div className={styles["banner-wrapper"]}>
@@ -40,12 +41,12 @@ const Banner: React.FC<DemoSliderProps> = ({ data }) => {
             loop={true}
             modules={[Autoplay, Navigation, Pagination]}
           >
-            {data.map(({ id }) => (
-              <SwiperSlide key={id}>
+            {bannerList?.map((banner) => (
+              <SwiperSlide key={banner.imageId}>
                 <a href="">
                   <img
-                    src="https://n7media.coolmate.me/uploads/August2025/29DHero_Banner_-_1920_x_789_(1).jpg"
-                    alt=""
+                    src={`${CONFIG.BASE_URL + CONFIG.BASE_URL_VERSION + ADMIN_FILES + banner.imageId}`}
+                    alt={banner.description}
                   />
                 </a>
               </SwiperSlide>
