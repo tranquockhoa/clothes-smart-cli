@@ -1,6 +1,9 @@
 //Colors
 $black-color: #183b56;
 $gray-color: #5a7184;
+$gray-color-52: #525252;
+$neutral-gray: #a3a3a3;
+$neutral-200: #e5e5e5;
 $gray-light-color: #b3bac5;
 $white-color: #ffffff;
 $black-color: #000000;
@@ -9,6 +12,12 @@ $blue-color: #273bce;
 //text-colors
 $text-primary-color: #000000;
 $text-secondary-color: #e6e6e6;
+$text-tertiary: #737373;
+
+// nền chính
+$bg-primary: #ffffff; // nền trắng
+$bg-secondary: #f2f2f2; // nền phụ (section, card)
+$bg-tertiary: #525252;
 
 // Breakpoints
 
@@ -24,6 +33,7 @@ $font-size-md: 1rem; // 16px
 $font-size-lg: 1.125rem; // 18px
 $font-size-xl: 1.25rem; // 20px
 $font-size-2xl: 1.5rem; // 24px
+$font-size-2-5xl: 1.75rem; //28px
 $font-size-3xl: 2rem; // 32px
 $font-size-4xl: 2.5rem; // 40px
 $font-size-5xl: 3rem; // 40px
@@ -33,3 +43,13 @@ $font-size-8xl: 6rem; // 96px
 $font-size-9xl: 8rem; // 128px
 
 $discount-price-color: #a3a3a3;
+
+// border-radius
+$radius-sm: 0.125rem; // 2px
+$radius: 0.25rem; // 4px
+$radius-md: 0.375rem; // 6px
+$radius-lg: 0.5rem; // 8px
+$radius-xl: 0.75rem; // 12px
+$radius-2xl: 1rem; // 16px
+$radius-3xl: 1.5rem; // 24px
+$radius-full: 9999px;

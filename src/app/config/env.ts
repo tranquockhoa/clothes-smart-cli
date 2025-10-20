@@ -1,0 +1,4 @@
+export const CONFIG = {
+  BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  BASE_URL_VERSION: process.env.NEXT_PUBLIC_API_BASE_URL_VERSION,
+};

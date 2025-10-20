@@ -1,8 +1,9 @@
 "use client";
-import SearchInput from "./components/ui/search";
+import SearchInput from "./_components/ui/search";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { useEffect, useRef, useState } from "react";
 import "./header.scss";
+import PopupLogin from "./_components/popup-login";
 
 function Header() {
   const scrollPos = useRef(0);
@@ -65,7 +66,7 @@ function Header() {
           </ul>
         </div>
         <div className={"label-right"}>
-          <SearchInput />
+          <SearchInput /> <PopupLogin />
           <a href="">
             <LocalMallIcon sx={{ color: "black" }} />
           </a>

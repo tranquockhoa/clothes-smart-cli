@@ -1,0 +1,70 @@
+@use "../../../styles/variable.scss" as variable;
+
+.category-list {
+  margin: 60px 0px 0px;
+  &__wrap-button {
+    height: 48px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+
+    button {
+      display: block;
+      font-size: variable.$font-size-md;
+      width: auto;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+  }
+
+  &__wrap-link {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+
+    .item {
+      flex: 0 0 calc((100% - (10px * 5)) / 6);
+      text-decoration: none;
+      color: variable.$text-primary-color;
+      gap: 0.5rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.2s;
+      }
+
+      img:hover {
+        transform: scale(1.05);
+      }
+
+      p {
+        text-align: center;
+        font-size: 16px;
+        color: #020817;
+      }
+      &--image {
+        height: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+    }
+
+    .Swiper {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
