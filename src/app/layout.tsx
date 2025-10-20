@@ -22,6 +22,7 @@ export default function RootLayout({
         <ReduxProvider>
           <Header />
           <main style={{ paddingTop: "132px" }}> {children}</main>
+
           <Footer />
         </ReduxProvider>
       </body>
